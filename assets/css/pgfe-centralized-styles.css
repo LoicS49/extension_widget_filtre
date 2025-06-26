@@ -1,0 +1,970 @@
+/*
+ * PGFE Lite - Styles Centralisés et Consolidés
+ * 
+ * Ce fichier unique centralise TOUS les styles CSS du plugin PGFE Lite
+ * Consolidation de pgfe-centralized-styles.css, pgfe-lite.css et pgfe-widgets-common.css
+ * 
+ * @package PGFE_Lite
+ * @since 1.0.0
+ * @version 2.0.0 - Consolidation complète
+ */
+
+/* ==========================================================================
+   VARIABLES CSS GLOBALES
+   ========================================================================== */
+
+:root {
+    /* Couleurs principales */
+    --pgfe-primary-color: #007cba;
+    --pgfe-secondary-color: #50575e;
+    --pgfe-accent-color: #0073aa;
+    --pgfe-success-color: #46b450;
+    --pgfe-warning-color: #ffb900;
+    --pgfe-error-color: #dc3232;
+    
+    /* Couleurs de texte */
+    --pgfe-text-primary: #333;
+    --pgfe-text-secondary: #666;
+    --pgfe-text-muted: #999;
+    --pgfe-text-light: #fff;
+    
+    /* Couleurs de fond */
+    --pgfe-bg-primary: #fff;
+    --pgfe-bg-secondary: #f8f9fa;
+    --pgfe-bg-dark: #2c3e50;
+    
+    /* Bordures */
+    --pgfe-border-color: #ddd;
+    --pgfe-border-light: #e0e0e0;
+    --pgfe-border-dark: #ccc;
+    --pgfe-border-radius: 4px;
+    --pgfe-border-radius-large: 8px;
+    
+    /* Espacement */
+    --pgfe-spacing-xs: 5px;
+    --pgfe-spacing-sm: 10px;
+    --pgfe-spacing-md: 15px;
+    --pgfe-spacing-lg: 20px;
+    --pgfe-spacing-xl: 30px;
+    --pgfe-spacing-xxl: 40px;
+    
+    /* Transitions */
+    --pgfe-transition-fast: 0.15s ease;
+    --pgfe-transition-normal: 0.3s ease;
+    --pgfe-transition-slow: 0.5s ease;
+    
+    /* Ombres */
+    --pgfe-shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --pgfe-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --pgfe-shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+    
+    /* Typographie */
+    --pgfe-font-size-xs: 12px;
+    --pgfe-font-size-sm: 14px;
+    --pgfe-font-size-md: 16px;
+    --pgfe-font-size-lg: 18px;
+    --pgfe-font-size-xl: 20px;
+    --pgfe-font-size-xxl: 24px;
+    
+    --pgfe-font-weight-normal: 400;
+    --pgfe-font-weight-medium: 500;
+    --pgfe-font-weight-semibold: 600;
+    --pgfe-font-weight-bold: 700;
+    
+    --pgfe-line-height-tight: 1.2;
+    --pgfe-line-height-normal: 1.5;
+    --pgfe-line-height-relaxed: 1.7;
+}
+
+/* ==========================================================================
+   STYLES DE BASE ET RESET
+   ========================================================================== */
+
+.pgfe-widget {
+    box-sizing: border-box;
+    font-family: inherit;
+    line-height: var(--pgfe-line-height-normal);
+}
+
+.pgfe-widget *,
+.pgfe-widget *::before,
+.pgfe-widget *::after {
+    box-sizing: inherit;
+}
+
+/* ==========================================================================
+   PRICE SLIDER WIDGET
+   ========================================================================== */
+
+.pgfe-price-slider-widget {
+    padding: var(--pgfe-spacing-lg);
+    background: var(--pgfe-bg-primary);
+    border: 1px solid var(--pgfe-border-light);
+    border-radius: var(--pgfe-border-radius-large);
+    margin-bottom: var(--pgfe-spacing-lg);
+    box-shadow: var(--pgfe-shadow-sm);
+}
+
+.pgfe-price-slider-widget .widget-title {
+    font-size: var(--pgfe-font-size-lg);
+    font-weight: var(--pgfe-font-weight-semibold);
+    margin: 0 0 var(--pgfe-spacing-lg) 0;
+    color: var(--pgfe-text-primary);
+    line-height: var(--pgfe-line-height-tight);
+}
+
+.pgfe-price-slider {
+    margin: var(--pgfe-spacing-lg) 0;
+}
+
+.slider-container {
+    position: relative;
+    height: 20px;
+    margin: var(--pgfe-spacing-lg) 0;
+}
+
+.pgfe-price-slider-inner {
+    position: relative;
+    height: 6px;
+    background: var(--pgfe-border-light);
+    border-radius: 3px;
+    top: 7px;
+}
+
+.pgfe-price-slider-inner .slider-track {
+    position: absolute;
+    height: 100%;
+    background: var(--pgfe-primary-color);
+    border-radius: 3px;
+    transition: var(--pgfe-transition-normal);
+}
+
+.pgfe-price-slider-inner .slider-handle {
+    position: absolute;
+    top: -7px;
+    width: 20px;
+    height: 20px;
+    background: var(--pgfe-primary-color);
+    border: 2px solid var(--pgfe-bg-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--pgfe-transition-fast);
+    box-shadow: var(--pgfe-shadow-sm);
+    margin-left: -10px;
+    z-index: 10;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    touch-action: none;
+}
+
+.pgfe-price-slider-inner .slider-handle:hover {
+    transform: scale(1.1);
+    box-shadow: var(--pgfe-shadow-md);
+}
+
+.pgfe-price-slider-inner .slider-handle:active,
+.pgfe-price-slider-inner .slider-handle.active {
+    transform: scale(0.95);
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--pgfe-spacing-sm);
+    font-size: var(--pgfe-font-size-sm);
+    color: var(--pgfe-text-secondary);
+}
+
+.price-labels .price-label-min,
+.price-labels .price-label-max {
+    font-weight: var(--pgfe-font-weight-medium);
+}
+
+.pgfe-price-inputs {
+    display: flex;
+    gap: var(--pgfe-spacing-md);
+    margin-top: var(--pgfe-spacing-lg);
+}
+
+.pgfe-price-input {
+    flex: 1;
+}
+
+.pgfe-price-input label {
+    display: block;
+    font-size: var(--pgfe-font-size-sm);
+    font-weight: var(--pgfe-font-weight-medium);
+    margin-bottom: var(--pgfe-spacing-xs);
+    color: var(--pgfe-text-secondary);
+}
+
+.pgfe-price-input input {
+    width: 100%;
+    padding: var(--pgfe-spacing-sm);
+    border: 1px solid var(--pgfe-border-color);
+    border-radius: var(--pgfe-border-radius);
+    font-size: var(--pgfe-font-size-sm);
+    transition: var(--pgfe-transition-fast);
+    background: var(--pgfe-bg-primary);
+}
+
+.pgfe-price-input input:focus {
+    outline: none;
+    border-color: var(--pgfe-primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1);
+}
+
+.pgfe-price-input input:hover {
+    border-color: var(--pgfe-border-dark);
+}
+
+/* ==========================================================================
+   CATEGORY FILTERS
+   ========================================================================== */
+
+.pgfe-category-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pgfe-category-list li {
+    margin-bottom: var(--pgfe-spacing-sm);
+}
+
+.pgfe-category-list label {
+    display: flex;
+    align-items: center;
+    font-size: var(--pgfe-font-size-sm);
+    cursor: pointer;
+    padding: var(--pgfe-spacing-xs) 0;
+    transition: var(--pgfe-transition-fast);
+    color: var(--pgfe-text-primary);
+}
+
+.pgfe-category-list label:hover {
+    color: var(--pgfe-primary-color);
+}
+
+.pgfe-category-list input[type="checkbox"] {
+    margin-right: var(--pgfe-spacing-sm);
+    accent-color: var(--pgfe-primary-color);
+}
+
+.pgfe-category-count {
+    margin-left: auto;
+    font-size: var(--pgfe-font-size-xs);
+    color: var(--pgfe-text-muted);
+    background: var(--pgfe-bg-secondary);
+    padding: 2px var(--pgfe-spacing-xs);
+    border-radius: var(--pgfe-border-radius);
+}
+
+/* Accordion Style */
+.pgfe-category-accordion {
+    border: 1px solid var(--pgfe-border-light);
+    border-radius: var(--pgfe-border-radius);
+    overflow: hidden;
+}
+
+.pgfe-category-accordion-item {
+    border-bottom: 1px solid var(--pgfe-border-light);
+}
+
+.pgfe-category-accordion-item:last-child {
+    border-bottom: none;
+}
+
+.pgfe-category-accordion-header {
+    background: var(--pgfe-bg-secondary);
+    padding: var(--pgfe-spacing-md);
+    cursor: pointer;
+    font-weight: var(--pgfe-font-weight-medium);
+    transition: var(--pgfe-transition-fast);
+    border: none;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pgfe-category-accordion-header:hover {
+    background: var(--pgfe-border-light);
+}
+
+.pgfe-category-accordion-header.active {
+    background: var(--pgfe-primary-color);
+    color: var(--pgfe-text-light);
+}
+
+.pgfe-category-accordion-content {
+    padding: var(--pgfe-spacing-md);
+    display: none;
+}
+
+.pgfe-category-accordion-content.active {
+    display: block;
+}
+
+/* ==========================================================================
+   LOADING STATES
+   ========================================================================== */
+
+.pgfe-loading {
+    position: relative;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.pgfe-loading::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--pgfe-border-color);
+    border-top: 2px solid var(--pgfe-primary-color);
+    border-radius: 50%;
+    animation: pgfe-spin 1s linear infinite;
+    margin-left: var(--pgfe-spacing-sm);
+}
+
+@keyframes pgfe-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.pgfe-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--pgfe-border-light);
+    border-top: 2px solid var(--pgfe-primary-color);
+    border-radius: 50%;
+    animation: pgfe-spin 1s linear infinite;
+}
+
+.pgfe-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* ==========================================================================
+   LEGACY STYLES REMOVED
+   ========================================================================== */
+
+/* Les styles de l'ancienne grille ProductGrid ont été supprimés */
+/* Le nouveau SimpleGridWidget utilise des styles intégrés pour de meilleures performances */
+/* Ce fichier est maintenu pour les autres composants du plugin */
+
+
+/* ==========================================================================
+   BUTTONS ET ACTIONS
+   ========================================================================== */
+
+.pgfe-btn {
+    display: inline-block;
+    padding: var(--pgfe-spacing-sm) var(--pgfe-spacing-md);
+    border: 1px solid var(--pgfe-primary-color);
+    border-radius: var(--pgfe-border-radius);
+    background: var(--pgfe-primary-color);
+    color: var(--pgfe-text-light);
+    text-decoration: none;
+    font-size: var(--pgfe-font-size-sm);
+    font-weight: var(--pgfe-font-weight-medium);
+    cursor: pointer;
+    transition: var(--pgfe-transition-fast);
+    text-align: center;
+    line-height: 1;
+}
+
+.pgfe-btn:hover {
+    background: var(--pgfe-accent-color);
+    border-color: var(--pgfe-accent-color);
+    transform: translateY(-1px);
+    box-shadow: var(--pgfe-shadow-sm);
+}
+
+.pgfe-btn:active {
+    transform: translateY(0);
+}
+
+.pgfe-btn-secondary {
+    background: transparent;
+    color: var(--pgfe-primary-color);
+}
+
+.pgfe-btn-secondary:hover {
+    background: var(--pgfe-primary-color);
+    color: var(--pgfe-text-light);
+}
+
+.pgfe-btn-small {
+    padding: var(--pgfe-spacing-xs) var(--pgfe-spacing-sm);
+    font-size: var(--pgfe-font-size-xs);
+}
+
+.pgfe-btn-large {
+    padding: var(--pgfe-spacing-md) var(--pgfe-spacing-xl);
+    font-size: var(--pgfe-font-size-md);
+}
+
+/* ==========================================================================
+   FORMULAIRES ET INPUTS
+   ========================================================================== */
+
+.pgfe-form-group {
+    margin-bottom: var(--pgfe-spacing-md);
+}
+
+.pgfe-form-label {
+    display: block;
+    font-size: var(--pgfe-font-size-sm);
+    font-weight: var(--pgfe-font-weight-medium);
+    margin-bottom: var(--pgfe-spacing-xs);
+    color: var(--pgfe-text-primary);
+}
+
+.pgfe-form-input,
+.pgfe-form-select,
+.pgfe-form-textarea {
+    width: 100%;
+    padding: var(--pgfe-spacing-sm);
+    border: 1px solid var(--pgfe-border-color);
+    border-radius: var(--pgfe-border-radius);
+    font-size: var(--pgfe-font-size-sm);
+    background: var(--pgfe-bg-primary);
+    transition: var(--pgfe-transition-fast);
+}
+
+.pgfe-form-input:focus,
+.pgfe-form-select:focus,
+.pgfe-form-textarea:focus {
+    outline: none;
+    border-color: var(--pgfe-primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1);
+}
+
+.pgfe-form-input:hover,
+.pgfe-form-select:hover,
+.pgfe-form-textarea:hover {
+    border-color: var(--pgfe-border-dark);
+}
+
+.pgfe-form-checkbox,
+.pgfe-form-radio {
+    accent-color: var(--pgfe-primary-color);
+    margin-right: var(--pgfe-spacing-xs);
+}
+
+/* ==========================================================================
+   MESSAGES ET NOTIFICATIONS
+   ========================================================================== */
+
+.pgfe-message {
+    padding: var(--pgfe-spacing-md);
+    border-radius: var(--pgfe-border-radius);
+    margin-bottom: var(--pgfe-spacing-md);
+    border-left: 4px solid;
+}
+
+.pgfe-message-success {
+    background: rgba(70, 180, 80, 0.1);
+    border-color: var(--pgfe-success-color);
+    color: #155724;
+}
+
+.pgfe-message-warning {
+    background: rgba(255, 185, 0, 0.1);
+    border-color: var(--pgfe-warning-color);
+    color: #856404;
+}
+
+.pgfe-message-error {
+    background: rgba(220, 50, 50, 0.1);
+    border-color: var(--pgfe-error-color);
+    color: #721c24;
+}
+
+.pgfe-message-info {
+    background: rgba(0, 124, 186, 0.1);
+    border-color: var(--pgfe-primary-color);
+    color: #004085;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN - Styles génériques pour les widgets de filtre
+   ========================================================================== */
+
+/* Media queries pour la responsivité des filtres */
+@media (max-width: 768px) {
+    .pgfe-filter-form {
+        padding: 15px;
+    }
+    
+    .pgfe-category-pills {
+        gap: 6px;
+    }
+    
+    .pgfe-category-pill {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pgfe-filter-form {
+        padding: 12px;
+    }
+    
+    .pgfe-category-dropdown {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================================================
+   ELEMENTOR COMPATIBILITY
+   ========================================================================== */
+
+/* Override Elementor grid systems */
+/* Styles pour le nouveau SimpleGridWidget */
+.elementor-container .pgfe-simple-grid {
+    display: grid;
+}
+
+.elementor-widget-container .pgfe-simple-grid {
+    width: 100%;
+}
+
+/* Ensure Elementor doesn't interfere with our styles */
+.elementor-widget .pgfe-product-item {
+    margin: 0;
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+.pgfe-hidden {
+    display: none !important;
+}
+
+.pgfe-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.pgfe-text-center {
+    text-align: center;
+}
+
+.pgfe-text-left {
+    text-align: left;
+}
+
+.pgfe-text-right {
+    text-align: right;
+}
+
+.pgfe-mb-0 { margin-bottom: 0; }
+.pgfe-mb-1 { margin-bottom: var(--pgfe-spacing-xs); }
+.pgfe-mb-2 { margin-bottom: var(--pgfe-spacing-sm); }
+.pgfe-mb-3 { margin-bottom: var(--pgfe-spacing-md); }
+.pgfe-mb-4 { margin-bottom: var(--pgfe-spacing-lg); }
+.pgfe-mb-5 { margin-bottom: var(--pgfe-spacing-xl); }
+
+.pgfe-mt-0 { margin-top: 0; }
+.pgfe-mt-1 { margin-top: var(--pgfe-spacing-xs); }
+.pgfe-mt-2 { margin-top: var(--pgfe-spacing-sm); }
+.pgfe-mt-3 { margin-top: var(--pgfe-spacing-md); }
+.pgfe-mt-4 { margin-top: var(--pgfe-spacing-lg); }
+.pgfe-mt-5 { margin-top: var(--pgfe-spacing-xl); }
+
+.pgfe-p-0 { padding: 0; }
+.pgfe-p-1 { padding: var(--pgfe-spacing-xs); }
+.pgfe-p-2 { padding: var(--pgfe-spacing-sm); }
+.pgfe-p-3 { padding: var(--pgfe-spacing-md); }
+.pgfe-p-4 { padding: var(--pgfe-spacing-lg); }
+.pgfe-p-5 { padding: var(--pgfe-spacing-xl); }
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes pgfe-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pgfe-slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes pgfe-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.pgfe-animate-fadeIn {
+    animation: pgfe-fadeIn 0.3s ease-out;
+}
+
+.pgfe-animate-slideIn {
+    animation: pgfe-slideIn 0.3s ease-out;
+}
+
+.pgfe-animate-pulse {
+    animation: pgfe-pulse 2s infinite;
+}
+
+/* ==========================================================================
+   FILTER WIDGETS - Consolidé depuis pgfe-lite.css et pgfe-widgets-common.css
+   ========================================================================== */
+
+/* Category Filter Widgets */
+.pgfe-category-filter-widget {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.pgfe-category-filter-widget .widget-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: #333;
+}
+
+/* Dropdown Style */
+.pgfe-category-dropdown {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.pgfe-category-dropdown:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1);
+}
+
+/* Pills Style */
+.pgfe-category-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pgfe-category-pill {
+    padding: 8px 16px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: #333;
+}
+
+.pgfe-category-pill:hover {
+    background: #e0e0e0;
+    border-color: #ccc;
+}
+
+.pgfe-category-pill.active {
+    background: #007cba;
+    border-color: #007cba;
+    color: #fff;
+}
+
+/* Filter Form */
+.pgfe-filter-form {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.pgfe-filter-section {
+    margin-bottom: 20px;
+}
+
+.pgfe-filter-section:last-child {
+    margin-bottom: 0;
+}
+
+.pgfe-filter-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.pgfe-filter-submit {
+    width: 100%;
+    padding: 12px;
+    background: #007cba;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.pgfe-filter-submit:hover {
+    background: #005a87;
+}
+
+.pgfe-filter-reset {
+    width: 100%;
+    padding: 10px;
+    background: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.pgfe-filter-reset:hover {
+    background: #5a6268;
+}
+
+/* Empty State */
+.pgfe-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY ET UTILITAIRES
+   ========================================================================== */
+
+.pgfe-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Widget Base */
+.pgfe-filter-widget {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.pgfe-filter-widget:hover {
+    border-color: #ccc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   STYLES SPÉCIFIQUES ELEMENTOR (Nettoyé)
+   ========================================================================== */
+
+/* Elementor specific styles for PGFE filter widgets */
+.elementor-widget-pgfe-filter .pgfe-filter-widget {
+    margin-bottom: 20px;
+}
+
+/* Styles pour le nouveau SimpleGridWidget */
+.elementor-widget-pgfe-simple-grid {
+    /* Les styles sont intégrés directement dans le widget pour de meilleures performances */
+}
+
+/* ==========================================================================
+   STYLES POUR LE FILTRAGE ET ANIMATIONS
+   ========================================================================== */
+
+/* Loader de filtrage */
+.pgfe-grid-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--pgfe-spacing-lg);
+    border-radius: var(--pgfe-border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-width: 200px;
+}
+
+.pgfe-grid-loader p {
+    margin: var(--pgfe-spacing-sm) 0 0;
+    color: var(--pgfe-text-secondary);
+    font-size: 14px;
+}
+
+/* Spinner animation */
+.pgfe-spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 3px solid var(--pgfe-border-light);
+    border-top: 3px solid var(--pgfe-primary-color);
+    border-radius: 50%;
+    animation: pgfe-spin 1s linear infinite;
+}
+
+@keyframes pgfe-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* État de filtrage */
+.pgfe-simple-grid.pgfe-filtering {
+    position: relative;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.pgfe-simple-grid.pgfe-filtering .pgfe-grid-item {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+/* Animation d'apparition des éléments */
+.pgfe-grid-item.pgfe-fade-in {
+    animation: pgfe-fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes pgfe-fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* États de transition */
+.pgfe-grid-item {
+    transition: all 0.3s ease;
+}
+
+.pgfe-grid-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Message d'erreur */
+.pgfe-grid-error {
+    text-align: center;
+    padding: var(--pgfe-spacing-xl);
+    background: var(--pgfe-bg-secondary);
+    border: 1px solid var(--pgfe-border-color);
+    border-radius: var(--pgfe-border-radius);
+    margin: var(--pgfe-spacing-md) 0;
+}
+
+.pgfe-grid-error p {
+    color: var(--pgfe-error-color);
+    margin-bottom: var(--pgfe-spacing-md);
+    font-weight: 500;
+}
+
+.pgfe-retry-filter {
+    background: var(--pgfe-primary-color);
+    color: var(--pgfe-text-light);
+    border: none;
+    padding: var(--pgfe-spacing-sm) var(--pgfe-spacing-lg);
+    border-radius: var(--pgfe-border-radius);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.pgfe-retry-filter:hover {
+    background: var(--pgfe-accent-color);
+}
+
+/* Message "Aucun produit" */
+.pgfe-no-products {
+    text-align: center;
+    padding: var(--pgfe-spacing-xl);
+    color: var(--pgfe-text-secondary);
+    font-style: italic;
+    background: var(--pgfe-bg-secondary);
+    border: 1px dashed var(--pgfe-border-color);
+    border-radius: var(--pgfe-border-radius);
+    margin: var(--pgfe-spacing-md) 0;
+}
+
+/* Responsive pour les animations */
+@media (prefers-reduced-motion: reduce) {
+    .pgfe-grid-item.pgfe-fade-in,
+    .pgfe-spinner,
+    .pgfe-grid-item {
+        animation: none;
+        transition: none;
+    }
+    
+    .pgfe-grid-item.pgfe-fade-in {
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -1,0 +1,67 @@
+/*
+ * PGFE Lite - Elementor Specific Styles
+ * 
+ * This file contains minimal styles for Elementor integration
+ * The new SimpleGridWidget has integrated styles for better performance
+ * 
+ * @package PGFE_Lite
+ * @since 2.0.0
+ * @version 2.0.0
+ */
+
+/* ==========================================================================
+   ELEMENTOR COMPATIBILITY
+   ========================================================================== */
+
+/* Ensure proper widget spacing in Elementor */
+.elementor-widget-pgfe-simple-grid {
+    margin-bottom: 0;
+}
+
+.elementor-widget-pgfe-simple-grid .elementor-widget-container {
+    overflow: visible;
+}
+
+/* Filter widgets compatibility */
+.elementor-widget-pgfe-price-slider,
+.elementor-widget-pgfe-attribute-filter,
+.elementor-widget-pgfe-vendor-filter,
+.elementor-widget-pgfe-parent-category-filter,
+.elementor-widget-pgfe-child-category-filter,
+.elementor-widget-pgfe-tag-filter {
+    margin-bottom: 20px;
+}
+
+/* Responsive adjustments for Elementor editor */
+.elementor-editor-active .pgfe-simple-grid {
+    min-height: 200px;
+}
+
+.elementor-editor-active .pgfe-simple-grid:empty::before {
+    content: "Grille Simple PGFE - Ajoutez des produits pour voir l'aperçu";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    color: #6c757d;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Elementor preview mode adjustments */
+.elementor-preview .pgfe-simple-grid {
+    opacity: 1;
+}
+
+/* Column adjustments for Elementor sections */
+.elementor-column .elementor-widget-pgfe-simple-grid {
+    width: 100%;
+}
+
+.elementor-column .elementor-widget-pgfe-simple-grid:last-child {
+    margin-bottom: 0;
+}
